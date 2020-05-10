@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">News App</string>
+    <string name="visit">Visit</string>
+    <string name="date">Date :</string>
+    <string name="pillar_name">Pillar Name :</string>
+    <string name="section_name">Section Name :</string>
+    <string name="no_news_detected">No News Detected :(</string>
+    <string name="pref_key">Android</string>
+    <string name="pref_default">Android</string>
+    <string name="topic">Topic</string>
+    <string name="choose_topic">Choose Topic</string>
+    <string name="offline">You are offline</string>
+</resources>

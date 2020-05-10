@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference android:title="@string/topic"
+        android:summary="Choose your topic"
+        android:entries="@array/entries"
+        android:entryValues="@array/entries_val"
+        android:key="@string/pref_key"
+        android:defaultValue="@string/pref_default"/>
+</PreferenceScreen>

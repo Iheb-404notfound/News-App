@@ -17,8 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class storyAdapter extends ArrayAdapter<Story> {
-    public storyAdapter(@NonNull Context context, int resource, @NonNull List<Story> objects) {
+public class StoryAdapter extends ArrayAdapter<Story> {
+    public StoryAdapter(@NonNull Context context, int resource, @NonNull List<Story> objects) {
         super(context, resource, objects);
     }
 

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<Story>> {
     com.iheb.newsapp.Utils Utils;
     ListView list;
-    storyAdapter adapter;
+    StoryAdapter adapter;
     String topic = "";
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.setting_item) {
-            startActivity(new Intent(MainActivity.this, perferencesActivity.class));
+            startActivity(new Intent(MainActivity.this, PerferencesActivity.class));
         }
         return true;
     }
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         ProgressBar prog = findViewById(R.id.progress);
         prog.setVisibility(View.INVISIBLE);
         list = findViewById(R.id.list);
-        adapter = new storyAdapter(this, R.layout.list_item, data);
+        adapter = new StoryAdapter(this, R.layout.list_item, data);
         list.setEmptyView(findViewById(R.id.no_news));
         if (adapter != null && list != null && data != null) {
             list.setAdapter(adapter);

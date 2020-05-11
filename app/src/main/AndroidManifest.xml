@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".perferencesActivity" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".PerferencesActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".Extanded" />
         <activity android:name=".MainActivity">
             <intent-filter>

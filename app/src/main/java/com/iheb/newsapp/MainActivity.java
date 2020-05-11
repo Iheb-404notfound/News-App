@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 intent.putExtra("webTitle", story.getWebTitle());
                 intent.putExtra("webUrl", story.getWebUrl());
                 intent.putExtra("pillarName", story.getPillarName());
+                intent.putStringArrayListExtra("authors",story.getAuthors());
                 startActivity(intent);
             }
         });

@@ -8,7 +8,8 @@
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -50,7 +51,16 @@
                 style="@style/textStyle" />
         </LinearLayout>
     </ScrollView>
-
+    <TextView
+        android:layout_below="@id/scroll"
+        android:id="@+id/authors_title"
+        style="@style/text_title_Style"
+        android:text="@string/authors"/>
+    <ListView
+        android:id="@+id/authors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/authors_title"/>
     <Button
         android:id="@+id/btn"
         android:layout_width="80dp"

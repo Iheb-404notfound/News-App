@@ -21,11 +21,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Utils {
-    // in last review you told me that i copied my project , i didn't see any other project in github , i just searched for the queries names and keys , copied it (just 2 ones that i need to use) and that's legal bcs i didn't copy the project , all this is my own work , my own ideas , my own problem solving
     private static final String SEARCH = "http://content.guardianapis.com/search";
     private static final String API_KEY_QUERY = "api-key";
     private static final String QUERY_PARAMETRE = "q";
     private static final String API_KEY = "06126a28-dd8e-4161-921a-92b92cd705fb";
+    private static final String QUERY_SHOW_TAGS = "show-tags";
+    private static final String SHOW_TAGS = "contributor";
     String topic = "";
 
     public Utils(String topic) {
@@ -37,6 +38,7 @@ public class Utils {
         try {
             Uri.Builder builder = Uri.parse(SEARCH).buildUpon();
             builder.appendQueryParameter(QUERY_PARAMETRE, topic);
+            builder.appendQueryParameter(QUERY_SHOW_TAGS, SHOW_TAGS);
             builder.appendQueryParameter(API_KEY_QUERY, API_KEY);
             url = new URL(builder.toString());
         } catch (MalformedURLException e) {
@@ -53,8 +55,8 @@ public class Utils {
         try {
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(20000);
-            connection.setReadTimeout(15000);
+            connection.setConnectTimeout(15000);
+            connection.setReadTimeout(10000);
             connection.connect();
             if (connection.getResponseCode() == 200) {
                 input = connection.getInputStream();
@@ -103,7 +105,12 @@ public class Utils {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
+                ArrayList<String> authors = new ArrayList<>();
+                JSONArray tags = current.getJSONArray("tags");
+                for (int c = 0; c < tags.length(); c++) {
+                    JSONObject currentTag = tags.getJSONObject(c);
+                    authors.add(currentTag.getString("webTitle"));
+                }
                 String webTitle = current.getString("webTitle");
                 Log.e("json_parsing", "extractData: " + webTitle);
                 String webUrl = current.getString("webUrl");
@@ -113,8 +120,7 @@ public class Utils {
                 } catch (Exception e) {
                     pillarName = "Unknown";
                 }
-
-                array.add(new Story(sectionName, webPublicationDate, webTitle, webUrl, pillarName));
+                array.add(new Story(sectionName, webPublicationDate, webTitle, webUrl, pillarName, authors));
             }
         } catch (JSONException e) {
             e.printStackTrace();
